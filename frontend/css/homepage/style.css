@@ -1,0 +1,197 @@
+@import "normalize.css";
+
+@font-face {
+  font-family: "Geist Sans";
+  src: url("https://assets.codepen.io/605876/GeistVF.ttf") format("truetype");
+}
+
+*,
+*:after,
+*:before {
+	box-sizing: border-box;
+}
+
+body {
+    margin: 0 auto;
+    min-height: 100vh;
+	font-family:  "Geist Sans", "SF Pro Text", "SF Pro Icons", "AOS Icons", "Helvetica Neue", Helvetica, Arial, sans-serif, system-ui;
+	font-weight: 100;	
+	color: hsl(0 0% 6%);
+}
+::-webkit-scrollbar{
+    background-color: transparent;
+    display: none;
+}
+.bg {
+    background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/1462889/pat-back.svg');
+	background-position: center;
+	background-repeat: repeat;
+	background-size: 7%;
+	background-color: transparent;
+    margin-top: 100px;
+}
+h1 {
+	font-weight: 140;
+	font-size: clamp(2rem, 4vw + 1rem, 6rem);
+	background: linear-gradient(hsl(0 0% 50%), hsl(0 0% 20%));
+	-webkit-background-clip: text;
+	background-clip: text;
+	color: transparent;
+	animation: scale-down linear both;
+	animation-timeline: scroll();
+	animation-range: 0 50vh;
+}
+
+@keyframes scale-down {
+	to { scale: 0.75; }
+}
+
+.snow-game__title {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    font-size: 6vw;
+    font-weight: 400;font-family:  "Geist Sans", "SF Pro Text", "SF Pro Icons", "AOS Icons", "Helvetica Neue", Helvetica, Arial, sans-serif, system-ui;
+  }
+  .snow-game__title--highlighted {
+    color: hsl(140 80% 60%);
+  }
+
+  .thick {
+    text-decoration-thickness: 6px;
+  }
+  .underline {
+    text-decoration: underline;
+    text-decoration-color: hsl(140 80% 60%);
+  }
+.content {
+  background: black;font-family:  "Geist Sans", "SF Pro Text", "SF Pro Icons", "AOS Icons", "Helvetica Neue", Helvetica, Arial, sans-serif, system-ui;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  scale: 0.95;
+  margin-top: 190px;
+
+}
+
+@supports (animation-timeline: scroll()) {
+	.content {
+	  view-timeline: --content;
+	  animation: grow linear both;
+	  animation-timeline: scroll();
+	  animation-range: 0 50vh;
+	}
+}
+
+@keyframes grow {
+	to { scale: 1; }
+}
+
+.content svg {
+  height: 100%;
+  position: absolute;
+  right: 0%;
+  top: 0;
+  overflow: visible !important;
+  z-index: -1;
+}
+
+.content svg path {
+  stroke-width: clamp(2rem, 2vw, 4rem);
+}
+
+@media only screen and (orientation: portrait) {
+  svg {
+  box-shadow: inset 0px 0px 40px 0px white;
+    display: none;
+  }
+}
+
+section {
+  height: 102vh;
+}
+
+main > section {
+  height: 80vh;
+  display: grid;
+  place-items: center;
+  position: sticky;
+  top: 0;
+}
+
+main {
+  width: 100%;
+}
+
+.backers path {
+	stroke: hsl(0 0% 50%);
+}
+
+.fillers path {
+	stroke: hsl(0 100% 50% / 1);
+}
+
+.fillers path:nth-of-type(1) {
+	--len: 8620;
+	stroke: hsl(140 80% 60%);
+}
+.fillers path:nth-of-type(2) {
+	--len: 7200;
+	stroke: hsl(140 90% 60%);
+}
+.fillers path:nth-of-type(3) {
+	--len: 7952;
+	stroke: hsl(140 90% 60%);
+}
+
+.fillers path {
+	stroke-dasharray: var(--len);
+	stroke-dashoffset: var(--len);
+}
+
+@supports (animation-timeline: scroll()) {
+	.fillers path {
+		animation: fill linear both;
+		animation-timeline: --content;
+		animation-range: entry-crossing -38% exit 12%;
+	}
+}
+
+@keyframes fill {
+	to { stroke-dashoffset: 0; }
+}
+
+.content section {
+	display: grid;
+	align-content: center;
+	padding: 0 6rem;
+}
+
+section h2 {
+	font-size: clamp(2rem, 4vw + 1rem, 4rem);
+	font-weight: 120;
+	color: hsl(0 0% 90%);
+	width: 10ch;
+  white-space: nowrap;
+}
+
+section:nth-of-type(3),
+section:nth-of-type(4) {
+	justify-items: end;
+}
+section:last-child{
+  box-shadow: inset 0px -150px 50px 0px black;
+}
+
+a {
+	display: inline-block;
+	position: fixed;
+	z-index: 10;
+	display: grid;
+	place-items: center;
+}
+
+a img {
+	width: 80%;
+}
