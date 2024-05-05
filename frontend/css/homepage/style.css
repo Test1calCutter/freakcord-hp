@@ -36,7 +36,6 @@ h1 {
 	background: linear-gradient(hsl(0 0% 50%), hsl(0 0% 20%));
 	-webkit-background-clip: text;
 	background-clip: text;
-	color: transparent;
 	animation: scale-down linear both;
 	animation-timeline: scroll();
 	animation-range: 0 50vh;
